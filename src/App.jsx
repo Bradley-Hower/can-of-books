@@ -11,6 +11,8 @@ import {
   Route
 } from "react-router-dom";
 
+const BACKEND_SEVER = import.meta.env.VITE_SERVER
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -20,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:3001/books')
+    axios.get(`${BACKEND_SEVER}`)
       .then(res => this.setState({books: res.data}))
   }
 
