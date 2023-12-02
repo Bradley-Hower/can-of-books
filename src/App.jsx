@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
+import About from './About';
 import BestBooks from './BestBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -14,7 +15,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      books: []
+      books: [],
     }
   }
 
@@ -31,19 +32,18 @@ class App extends React.Component {
           <Routes>
             <Route 
               exact path="/"
-              element={<BestBooks />}
-            >
-
-              {/* <>
-                {this.state.books.length > 0 && this.state.books.map((book) => ( 
-                  <div key={book._id}>
-                    {book.name} in {book.location}
-                  </div>
-                ))}
-              </> */}
-              
+            >              
             </Route>
-            {/* PLACEHOLDER: add a route with a path of '/about' that renders the `About` component */}
+            <Route 
+              exact path="/about"
+              element={<About />}
+            >              
+            </Route>
+            <Route 
+              exact path="/books"
+              element={<BestBooks books={this.state.books}/>}
+            >
+            </Route>  
           </Routes>
           <Footer />
         </Router>

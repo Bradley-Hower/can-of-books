@@ -1,28 +1,39 @@
 import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      books: []
-    }
   }
-
-  /* TODO: Make a GET request to your API to fetch all the books from the database  */
 
   render() {
 
-    /* TODO: render all the books in a Carousel */
-
     return (
+      
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+      {this.props.books.length === 0 ? (
+        <h1>No Books Found. Try again later. </h1>
+      ) : (
+      <Carousel>
+        {this.props.books.length > 0 && this.props.books.map((book) => ( 
+          <Carousel.Item key={book._id}>
+          <img
+            className="d-block w-100"
+            src="./images/image.png"
+            alt="First slide" 
+            />
+            <Carousel.Caption>
+              <h3>{book.title}</h3>
+              <p>{book.description}</p>
+              <p>{book.status}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
 
-        {this.state.books.length ? (
-          <p>Book Carousel coming soon</p>
-        ) : (
-          <h3>No Books Found :(</h3>
-        )}
+      </Carousel>
+      )}
+
+        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
       </>
     )
   }
