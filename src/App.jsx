@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    axios.get(`${BACKEND_SEVER}`)
+    axios.get(`${BACKEND_SEVER}/books`)
       .then(res => this.setState({books: res.data}))
   }
 
