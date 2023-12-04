@@ -30,7 +30,7 @@ class BestBooks extends React.Component {
           <Carousel.Item key={book._id}>
           <img
             className="d-block w-100"
-            src="/main/images/image.png"
+            src="https://raw.githubusercontent.com/Bradley-Hower/can-of-books-frontend/main/images/image.png"
             alt="First slide" 
             />
             <Carousel.Caption>
