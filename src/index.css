@@ -29,3 +29,8 @@ img {
   height: 400px;
   width: 600px;
 }
+
+.submitbutton {
+  display: flex;
+  justify-content: center;
+}
