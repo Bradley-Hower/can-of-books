@@ -1,9 +1,20 @@
 import React from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import axios from 'axios';
+
+import { Button, Carousel } from 'react-bootstrap';
+
+const BACKEND_SEVER = import.meta.env.VITE_SERVER
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  deleteBook = (id) => {
+    const url = `${BACKEND_SEVER}/books/${id}`
+    axios.delete(url)
+    const updatedBooks = this.props.books.filter(book => book._id !== id);
+    this.props.setState({books: updatedBooks});
   }
 
   render() {
@@ -19,13 +30,14 @@ class BestBooks extends React.Component {
           <Carousel.Item key={book._id}>
           <img
             className="d-block w-100"
-            src="/images/image.png"
+            src="/main/images/image.png"
             alt="First slide" 
             />
             <Carousel.Caption>
               <h3>{book.title}</h3>
               <p>{book.description}</p>
               <p>{book.status}</p>
+              <Button variant="danger" onClick={() => (this.deleteBook(book._id))}>Delete</Button>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
