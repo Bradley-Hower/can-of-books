@@ -62,6 +62,12 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router, MongoDB, Mongoose
 
 2023-12-03 19:15 - Frontend delete feature impletemented
 
+2023-12-04 16:10 - Add PUT HTTP to backend server
+
+2023-12-04 17:00 - Add frontend UPDATE modal
+
+2023-12-04 19:35 - Add submit handler and show/hide feature for modal
+
 ## Lighthouse
 
 ![Screenshot_2023-12-02_15-15-11](https://github.com/Bradley-Hower/can-of-books-frontend/assets/139923955/e2cdd75b-74a1-483b-8c6c-e5cce2fdae67)
@@ -106,6 +112,7 @@ Finish time: 3:00 PM
 Actual time needed to complete: 1 hour
 
 ---
+
 Name of feature: Frontend framework for POST and DELETE
 
 Estimate of time needed to complete: 30 minutes
@@ -117,6 +124,7 @@ Finish time: 4:00 PM
 Actual time needed to complete: 1 hour
 
 ---
+
 Name of feature: Frontend form for adding books
 
 Estimate of time needed to complete: 30 minutes
@@ -128,6 +136,7 @@ Finish time: 5:15 PM
 Actual time needed to complete: 1 hour 15 minutes
 
 ---
+
 Name of feature: Frontend delete feature impletemented
 
 Estimate of time needed to complete: 1 hour
@@ -137,3 +146,41 @@ Start time: 5:15 PM
 Finish time: 7:15 PM
 
 Actual time needed to complete: 2 hours
+---
+PART III =======
+---
+Name of feature: Add PUT HTTP to backend server
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 3:28 PM
+
+Finish time: 4:10 PM
+
+Actual time needed to complete: 42 minutes
+
+---
+
+Name of feature: Add frontend UPDATE modal
+
+Estimate of time needed to complete: 45 minutes
+
+Start time: 4:10 PM
+
+Finish time: 5:00 PM
+
+Actual time needed to complete: 50 minutes
+
+---
+
+Name of feature: Add submit handler and show/hide feature for modal
+
+Estimate of time needed to complete: 45 minutes
+
+Start time: 5:00 PM
+
+Finish time: 7:35 PM
+
+Actual time needed to complete: 2 hours 35 minutes - had issues with variable name error
+
+---

@@ -1,31 +1,33 @@
 import React from 'react';
 import { Container, Form, Button, Modal } from 'react-bootstrap';
 
-class AddBook extends React.Component {
+class UpdateBook extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault();
 
-    const form = e.target;
+    const formData = e.target;
+    const bookToUpdate = this.props.bookToUpdate;
 
-    const newBook = {
-      title: form.title.value,
-      description: form.description.value,
-      status: form.status.value
+    const updatedBook = {
+      title: formData.title.value || bookToUpdate.title,
+      description: formData.description.value  || bookToUpdate.description,
+      status: formData.status.value || bookToUpdate.status,
+      _id: bookToUpdate._id
     };
 
-    this.props.postBook(newBook);
-    this.props.hidePostForm();
+    this.props.updateBook(updatedBook);
+    // this.props.bookToUpdate(updatedBook);
+    this.props.hideUpdateForm();
   }
-
 
   render() {
     return (
       
       <>
-      <Modal show={this.props.showPostForm} onHide={this.props.hidePostForm}>
+      <Modal show={this.props.showUpdateForm} onHide={this.props.hideUpdateForm}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a Book</Modal.Title>
+          <Modal.Title>Update a Book</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -35,17 +37,17 @@ class AddBook extends React.Component {
           <Form onSubmit={this.submitHandler}>
             <Form.Group controlId="title">
               <Form.Label>Book Title</Form.Label>
-              <Form.Control type="text" placeholder="Ex: The Cat in the Hat" />
+              <Form.Control type="text" placeholder={this.props.bookToUpdate.title} />
             </Form.Group>
             <br />
             <Form.Group controlId="description">
               <Form.Label>Book Description</Form.Label>
-              <Form.Control type="text" placeholder="Ex: The story of a humanoid cat-friend." />
+              <Form.Control type="text" placeholder={this.props.bookToUpdate.description} />
             </Form.Group>
             <br />
             <Form.Group controlId="status">
               <Form.Label>Book Status (Available/Unavailable)</Form.Label>
-              <Form.Control type="text" placeholder="Ex: Available/Unavailable" />
+              <Form.Control type="text" placeholder={this.props.bookToUpdate.status} />
             </Form.Group>
             <br />
             <Button variant="primary" type="submit">
@@ -62,4 +64,4 @@ class AddBook extends React.Component {
   }
 }
 
-export default AddBook;
+export default UpdateBook;
