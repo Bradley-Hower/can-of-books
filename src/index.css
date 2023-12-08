@@ -24,13 +24,20 @@ body {
   position: absolute;
 }
 
-img {
-
-  height: 400px;
-  width: 600px;
-}
-
 .submitbutton {
   display: flex;
   justify-content: center;
+}
+
+.nav-item:nth-child(5) {
+  border: none;
+}
+
+.nav-item:nth-child(6) {
+  display: inline;
+  border: none;
+}
+
+.nav-item:nth-child(5) > div{
+  display: inline;
 }

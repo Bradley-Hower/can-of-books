@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import AddBook from './AddBook';
 import UpdateBook from './UpdateBook';
-
 import { Button, Carousel } from 'react-bootstrap';
+import { withAuth0 } from '@auth0/auth0-react';
 
 const BACKEND_SEVER = import.meta.env.VITE_SERVER
 
@@ -18,16 +18,43 @@ class BestBooks extends React.Component {
     }
   }
 
-  componentDidMount(){
-    axios.get(`${BACKEND_SEVER}/books`)
-      .then(res => this.setState({books: res.data}))
+  async componentDidMount(){
+    this.getBooks();
   }
 
-  postBook = (newBook) => {
-    const url = `${BACKEND_SEVER}/books`
-    axios.post(url, newBook)
-    .then(res => this.setState({ books: [...this.state.books, res.data]}))
+
+
+  getToken = () => {
+    return this.props.auth0.getIdTokenClaims()
+      .then(res => res.__raw)
+      .catch(err => console.error(err))
   }
+
+  getBooks = async () => {
+    try {
+      const jwt = await this.getToken();
+      const config = {
+        headers: {'Authorization':`Bearer ${jwt}`}
+      }
+      const bookData = await axios(`${BACKEND_SEVER}/books`, config);
+      this.setState({ books: bookData.data});
+    }
+    catch (err) { console.error(err)}
+  }
+
+  postBook = async (newBook) => {
+    try {
+      const jwt = await this.getToken();
+      const config = {
+        headers: {'Authorization': `Bearer ${jwt}`}
+      }
+      const url = `${BACKEND_SEVER}/books`
+      let createdBook = await axios.post(url, newBook, config)
+      this.setState({ books: [...this.state.books, createdBook.data]})
+    }
+    catch (err) { console.error(err)}
+  }
+
 
   updateBook = (bookToUpdate) => {
     const url = `${BACKEND_SEVER}/books/${bookToUpdate._id}`
@@ -62,7 +89,7 @@ class BestBooks extends React.Component {
       <Carousel>
         {this.state.books.length > 0 && this.state.books.map((book) => ( 
           <Carousel.Item key={book._id}>
-          <img
+          <img width={600} height={400}
             className="d-block w-100"
             src="https://raw.githubusercontent.com/Bradley-Hower/can-of-books-frontend/main/images/image.png"
             alt="First slide" 
@@ -95,4 +122,4 @@ class BestBooks extends React.Component {
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);
