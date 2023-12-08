@@ -11,7 +11,7 @@ class AddBook extends React.Component {
     const newBook = {
       title: form.title.value,
       description: form.description.value,
-      status: form.status.value
+      status: form.status.value,
     };
 
     this.props.postBook(newBook);
