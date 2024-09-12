@@ -4,7 +4,7 @@
 **Version**: 1.0.0 
 
 ## Overview
-The purpose of this application is to act as a back-end server for the City Explorer project. https://github.com/Bradley-Hower/can-of-books-backend
+The purpose of this application is to act as a front-end server for the Can of Books project. The backe-nd is located here: https://github.com/Bradley-Hower/can-of-books-backend
 
 This project will fully utilize a front-end, back-end, and database server.
 
